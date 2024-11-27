@@ -1,6 +1,6 @@
-package software.ulpgc.io;
+package software.ulpgc.architecture.io;
 
-import software.ulpgc.model.Currency;
+import software.ulpgc.architecture.model.Currency;
 
 public class TsvCurrencyDeserializer implements CurrencyDeserializer {
     @Override

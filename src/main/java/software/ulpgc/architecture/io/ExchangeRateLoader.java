@@ -1,6 +1,6 @@
-package software.ulpgc.io;
-import software.ulpgc.model.Currency;
-import software.ulpgc.model.ExchangeRate;
+package software.ulpgc.architecture.io;
+import software.ulpgc.architecture.model.Currency;
+import software.ulpgc.architecture.model.ExchangeRate;
 import java.io.IOException;
 
 import java.time.LocalDate;

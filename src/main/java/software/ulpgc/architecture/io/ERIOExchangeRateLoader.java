@@ -1,11 +1,11 @@
-package software.ulpgc.io;
+package software.ulpgc.architecture.io;
 
 import com.google.gson.Gson;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import software.ulpgc.model.Currency;
-import software.ulpgc.model.ExchangeRate;
+import software.ulpgc.architecture.model.Currency;
+import software.ulpgc.architecture.model.ExchangeRate;
 
 import java.io.IOException;
 import java.io.InputStream;

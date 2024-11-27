@@ -1,5 +1,5 @@
-package software.ulpgc.model;
-import software.ulpgc.io.CurrencyLoader;
+package software.ulpgc.architecture.model;
+import software.ulpgc.architecture.io.CurrencyLoader;
 
 import java.io.IOException;
 import java.util.Collection;

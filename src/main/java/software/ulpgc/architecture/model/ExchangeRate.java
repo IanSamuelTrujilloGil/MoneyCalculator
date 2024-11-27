@@ -1,4 +1,4 @@
-package software.ulpgc.model;
+package software.ulpgc.architecture.model;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package software.ulpgc.model;
+package software.ulpgc.architecture.model;
 
 public class Money {
     private final double amount;
