@@ -31,7 +31,8 @@ public class Main {
         mainFrame.put("reset", new ResetCommand(
                 mainFrame.getDateDialog(),
                 mainFrame.getMoneyDialog(),
-                mainFrame.getMoneyDisplay()
+                mainFrame.getMoneyDisplay(),
+                mainFrame.getCurrencyDialog()
         ));
         mainFrame.setVisible(true);
     }

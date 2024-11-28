@@ -59,4 +59,12 @@ public class SwingCurrencyDialog extends JPanel implements CurrencyDialog {
     public Currency get() {
         return currencies.get(selector.getSelectedIndex());
     }
+
+    @Override
+    public void reset() {
+        if (!currencies.isEmpty())
+            selector.setSelectedIndex(0);
+
+    }
+
 }

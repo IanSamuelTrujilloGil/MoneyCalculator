@@ -21,8 +21,7 @@ public class SwingMoneyDisplay extends JPanel implements MoneyDisplay {
     }
 
     private JTextField createResultField() {
-        this.resultField = new JTextField();
-        this.resultField.setColumns(20);
+        this.resultField = new JTextField(20);
         disableUserInput(resultField);
         SwingUIStyles.customizeFont(resultField);
         this.resultField.setBackground(Color.WHITE);

@@ -42,8 +42,9 @@ public class SwingMoneyDialog extends JPanel implements MoneyDialog {
     }
 
     @Override
-    public void resetMoney() {
+    public void reset() {
         amountField.setText(defaultMoneyAmount());
+        currencyDialog.reset();
     }
 
     private String defaultMoneyAmount() {
