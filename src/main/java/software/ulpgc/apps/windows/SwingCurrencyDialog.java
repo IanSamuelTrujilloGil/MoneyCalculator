@@ -7,6 +7,7 @@ import software.ulpgc.architecture.view.CurrencyUIFormatter;
 import javax.swing.*;
 
 import java.awt.*;
+
 import java.util.List;
 
 public class SwingCurrencyDialog extends JPanel implements CurrencyDialog {
@@ -16,7 +17,7 @@ public class SwingCurrencyDialog extends JPanel implements CurrencyDialog {
     public SwingCurrencyDialog(List<Currency> currencies) {
         this.currencies = sortCurrenciesByName(currencies);
         this.add(selector = selector());
-
+        SwingUIStyles.setDefaultBackground(this);
     }
 
     private JComboBox<Currency> selector() {
@@ -24,17 +25,11 @@ public class SwingCurrencyDialog extends JPanel implements CurrencyDialog {
         for (Currency currency : currencies)
             comboBox.addItem(currency);
         configureComboBoxRenderer(comboBox);
-        customizeComboboxView(comboBox);
+        SwingUIStyles.setDefaultStyle(comboBox);
         return comboBox;
     }
 
-    private static void customizeComboboxView(JComboBox<Currency> comboBox) {
-        comboBox.setPreferredSize(new Dimension(400,40));
-        comboBox.setMaximumSize(new Dimension(400,40));
-        comboBox.setBackground(Color.WHITE);
-        SwingUIStyles.customizeFont(comboBox);
-        comboBox.setMaximumRowCount(3);
-    }
+
 
     private List<Currency> sortCurrenciesByName(List<Currency> currencies) {
         currencies.sort((a,b) -> a.getName().compareTo(b.getName()));

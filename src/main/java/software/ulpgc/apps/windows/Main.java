@@ -17,7 +17,7 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        File file = new File("C:\\Users\\Ian\\IdeaProjects\\moneyCalculator\\src\\main\\resources\\currencies.tsv");
+        File file = new File("src/main/resources/currencies.tsv");
         List<Currency> currencyList = new FileCurrencyLoader(file, new TsvCurrencyDeserializer()).load();
         new CurrencyCodeValidator(new ERIOCurrencyLoader()).filterInvalidCurrencies(currencyList);
         MainFrame mainFrame = new MainFrame(currencyList);

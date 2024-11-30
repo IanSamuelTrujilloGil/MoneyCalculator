@@ -15,24 +15,26 @@ public class SwingMoneyDialog extends JPanel implements MoneyDialog {
         this.add(panel());
         this.add(this.currencyDialog = currencyDialog);
         this.setMaximumSize(new Dimension(Integer.MAX_VALUE,20));
+
     }
 
     private Component panel() {
         JPanel panel = new JPanel(new FlowLayout());
         panel.add(createAmountLabel());
         panel.add(this.amountField = amountField());
+        SwingUIStyles.setDefaultBackground(panel);
         return panel;
     }
 
     private static JLabel createAmountLabel() {
         JLabel jLabel = new JLabel("Amount:");
-        SwingUIStyles.customizeFont(jLabel);
+        SwingUIStyles.setDefaultStyle(jLabel);
         return jLabel;
     }
 
     private JTextField amountField() {
         JTextField textField = new JTextField(defaultMoneyAmount(),20);
-        SwingUIStyles.customizeFont(textField);
+        SwingUIStyles.setDefaultStyle(textField);
         return textField;
     }
 

@@ -18,23 +18,23 @@ public class SwingMoneyDisplay extends JPanel implements MoneyDisplay {
         this.add(createDisplayLabel());
         this.add(createResultField());
         this.setMaximumSize(new Dimension(Integer.MAX_VALUE,20));
+        SwingUIStyles.setDefaultBackground(this);
     }
 
     private JTextField createResultField() {
         this.resultField = new JTextField(20);
         disableUserInput(resultField);
-        SwingUIStyles.customizeFont(resultField);
-        this.resultField.setBackground(Color.WHITE);
+        SwingUIStyles.setDefaultStyle(resultField);
         return resultField;
     }
 
-    private void disableUserInput(JTextField resultField) {
-        this.resultField.setEditable(false);
+    private void disableUserInput(JTextField jTextField) {
+        jTextField.setEditable(false);
     }
 
     private JLabel createDisplayLabel() {
         this.displayLabel = new JLabel("Result:");
-        SwingUIStyles.customizeFont(displayLabel);
+        SwingUIStyles.setDefaultStyle(displayLabel);
         this.displayLabel.setHorizontalAlignment(SwingConstants.CENTER);
         return displayLabel;
     }

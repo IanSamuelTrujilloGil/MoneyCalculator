@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
         this.commands = new HashMap<>();
         this.setTitle("MoneyCalculator");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(1200, 1000);
+        this.setSize(900, 800);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
         this.add(toolbar(), BorderLayout.SOUTH);
@@ -35,25 +35,45 @@ public class MainFrame extends JFrame {
         this.add(createCenterPanel(),BorderLayout.CENTER);
     }
 
+    public MoneyDialog getMoneyDialog() {
+        return moneyDialog;
+    }
+
+    public SwingMoneyDisplay getMoneyDisplay() {
+        return moneyDisplay;
+    }
+
+    public SwingDateDialog getDateDialog() {
+        return dateDialog;
+    }
+
+    public CurrencyDialog getCurrencyDialog() {
+        return currencyDialog;
+    }
+
+    public void put(String key, Command value) {
+        commands.put(key, value);
+    }
 
     private Component createTitle() {
         JPanel jPanel = new JPanel();
         jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.Y_AXIS));
         jPanel.add(createTitleLabel());
         jPanel.add(createNameLabel());
+        SwingUIStyles.setTitleStyle(jPanel);
         return jPanel;
     }
 
     private JLabel createTitleLabel(){
         JLabel title = new JLabel("Money Calculator");
-        title.setFont( new Font( "Monospaced", Font.BOLD, 35) );
+        SwingUIStyles.setTitleStyle(title);
         centerAlignComponent(title);
         return title;
     }
 
     private JLabel createNameLabel() {
         JLabel name = new JLabel("Ian Samuel Trujillo Gil");
-        SwingUIStyles.customizeFont(name);
+        SwingUIStyles.setDefaultStyle(name);
         centerAlignComponent(name);
         return name;
     }
@@ -69,18 +89,19 @@ public class MainFrame extends JFrame {
         addFromComponents(centerPanel);
         addFlexibleVerticalSpace(centerPanel);
         addToComponents(centerPanel);
+        SwingUIStyles.setDefaultBackground(centerPanel);
         return centerPanel;
     }
 
-    private void addToComponents(JPanel centerPanel) {
-        centerPanel.add(createToLabel());
-        centerPanel.add(this.moneyDisplay = new SwingMoneyDisplay());
-        centerPanel.add(this.currencyDialog = new SwingCurrencyDialog(this.currencies));
+    private void addToComponents(JPanel panel) {
+        panel.add(createToLabel());
+        panel.add(this.moneyDisplay = new SwingMoneyDisplay());
+        panel.add(this.currencyDialog = new SwingCurrencyDialog(this.currencies));
     }
 
-    private void addFromComponents(JPanel centerPanel) {
-        centerPanel.add(createFromLabel());
-        centerPanel.add(this.moneyDialog = new SwingMoneyDialog(new SwingCurrencyDialog(this.currencies)));
+    private void addFromComponents(JPanel panel) {
+        panel.add(createFromLabel());
+        panel.add(this.moneyDialog = new SwingMoneyDialog(new SwingCurrencyDialog(this.currencies)));
     }
 
     private void addFlexibleVerticalSpace(JPanel panel) {
@@ -89,38 +110,18 @@ public class MainFrame extends JFrame {
 
     private JLabel createToLabel() {
         JLabel jLabel = new JLabel("To");
-        SwingUIStyles.customizeFont(jLabel);
+        SwingUIStyles.setDefaultStyle(jLabel);
         return jLabel;
     }
 
     private JLabel createFromLabel() {
         JLabel jLabel = new JLabel("From");
-        SwingUIStyles.customizeFont(jLabel);
+        SwingUIStyles.setDefaultStyle(jLabel);
         return jLabel;
     }
 
-
-
-
     private void centerAlignComponent(JComponent component) {
         component.setAlignmentX(Component.CENTER_ALIGNMENT);
-    }
-
-
-
-
-    public SwingMoneyDisplay getMoneyDisplay() {
-        return moneyDisplay;
-    }
-
-
-
-    public SwingDateDialog getDateDialog() {
-        return dateDialog;
-    }
-
-    public void put(String key, Command value) {
-        commands.put(key, value);
     }
 
     private Component toolbar() {
@@ -128,6 +129,7 @@ public class MainFrame extends JFrame {
         panel.setLayout(new FlowLayout());
         panel.add(button("reset"));
         panel.add(button("calculate"));
+        SwingUIStyles.setDefaultBackground(panel);
         return panel;
     }
 
@@ -137,18 +139,8 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 commands.get(name).execute();
-
             }
-
         });
         return button;
-    }
-
-    public MoneyDialog getMoneyDialog() {
-        return moneyDialog;
-    }
-
-    public CurrencyDialog getCurrencyDialog() {
-        return currencyDialog;
     }
 }

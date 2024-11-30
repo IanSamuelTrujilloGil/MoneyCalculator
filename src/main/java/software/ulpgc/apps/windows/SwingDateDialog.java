@@ -14,18 +14,19 @@ public class SwingDateDialog extends JPanel implements DateDialog {
         this.add(dateLabel());
         this.add(this.dateField = dateField());
         this.setMaximumSize(new Dimension(Integer.MAX_VALUE,20));
+        SwingUIStyles.setDefaultBackground(this);
     }
 
     private static JLabel dateLabel() {
         JLabel jLabel = new JLabel("Date:");
-        SwingUIStyles.customizeFont(jLabel);
+        SwingUIStyles.setDefaultStyle(jLabel);
         return jLabel;
 
     }
 
     private JTextField dateField() {
         JTextField textField = new JTextField(defaultDate(),11);
-        SwingUIStyles.customizeFont(textField);
+        SwingUIStyles.setDefaultStyle(textField);
         return textField;
     }
 
