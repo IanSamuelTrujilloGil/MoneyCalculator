@@ -24,8 +24,8 @@ public class Main {
                 mainFrame.getCurrencyDialog(),
                 new ExchangeRateLoader(new ERIOExchangeRateReader(), new ERIOExchangeRateDeserializer(), new ERIOExchangeRateAdapter()),
                 mainFrame.getMoneyDisplay()
-        ));
-        mainFrame.put("reset", new ResetCommand(
+        ))
+        .put("reset", new ResetCommand(
                 mainFrame.getDateDialog(),
                 mainFrame.getMoneyDialog(),
                 mainFrame.getMoneyDisplay(),

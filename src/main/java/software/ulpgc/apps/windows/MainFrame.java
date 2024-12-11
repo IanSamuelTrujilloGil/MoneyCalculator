@@ -51,8 +51,9 @@ public class MainFrame extends JFrame {
         return currencyDialog;
     }
 
-    public void put(String key, Command value) {
+    public MainFrame put(String key, Command value) {
         commands.put(key, value);
+        return this;
     }
 
     private Component createTitle() {
