@@ -15,6 +15,7 @@ import java.util.Map;
 
 
 public class ERIOCurrencyLoader implements CurrencyLoader{
+
     @Override
     public List<Currency> load() throws IOException {
         try (InputStream inputStream = buildUrl().openStream()) {
@@ -31,10 +32,13 @@ public class ERIOCurrencyLoader implements CurrencyLoader{
     private List<Currency> jsonToList(String json) throws IOException {
         List<Currency> currencies = new ArrayList<>();
         Map<String, JsonElement> symbols = new Gson().fromJson(json, JsonObject.class).getAsJsonObject("symbols").asMap();
+
         for (String symbol : symbols.keySet()) {
             currencies.add(new Currency(symbols.get(symbol).getAsString(),null, symbol));
         }
         return currencies;
     }
+
+
 
 }

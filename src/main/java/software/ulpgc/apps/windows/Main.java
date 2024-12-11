@@ -2,10 +2,7 @@ package software.ulpgc.apps.windows;
 
 import software.ulpgc.architecture.control.CalculateCommand;
 import software.ulpgc.architecture.control.ResetCommand;
-import software.ulpgc.architecture.io.ERIOCurrencyLoader;
-import software.ulpgc.architecture.io.ERIOExchangeRateLoader;
-import software.ulpgc.architecture.io.FileCurrencyLoader;
-import software.ulpgc.architecture.io.TsvCurrencyDeserializer;
+import software.ulpgc.architecture.io.*;
 import software.ulpgc.architecture.model.Currency;
 import software.ulpgc.architecture.model.CurrencyCodeValidator;
 
@@ -25,7 +22,7 @@ public class Main {
                 mainFrame.getDateDialog(),
                 mainFrame.getMoneyDialog(),
                 mainFrame.getCurrencyDialog(),
-                new ERIOExchangeRateLoader(),
+                new ExchangeRateLoader(new ERIOExchangeRateReader(), new ERIOExchangeRateDeserializer(), new ERIOExchangeRateAdapter()),
                 mainFrame.getMoneyDisplay()
         ));
         mainFrame.put("reset", new ResetCommand(
