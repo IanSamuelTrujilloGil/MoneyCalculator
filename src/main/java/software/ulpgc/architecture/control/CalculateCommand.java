@@ -2,7 +2,6 @@ package software.ulpgc.architecture.control;
 
 
 import software.ulpgc.architecture.io.ExchangeRateLoader;
-import software.ulpgc.architecture.model.Currency;
 import software.ulpgc.architecture.model.ExchangeRate;
 import software.ulpgc.architecture.model.Money;
 import software.ulpgc.architecture.view.CurrencyDialog;
@@ -31,14 +30,11 @@ public class CalculateCommand implements Command {
 
     @Override
     public void execute()  {
-        Money money = moneyDialog.get();
-        Currency currency = currencyDialog.get();
         try {
-            ExchangeRate exchangeRate = exchangeRateLoader.load(dateDialog.get(), money.getCurrency(), currency);
-            Money result = new Money(money.getAmount() * exchangeRate.getRate(), currency);
+            ExchangeRate exchangeRate = exchangeRateLoader.load(dateDialog.get(), moneyDialog.get().getCurrency(), currencyDialog.get());
+            Money result = new Money(moneyDialog.get().getAmount() * exchangeRate.getRate(), currencyDialog.get());
             moneyDisplay.display(result);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        } catch (IOException ignored) {
         }
 
     }
