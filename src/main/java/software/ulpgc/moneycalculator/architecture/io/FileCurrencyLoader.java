@@ -2,27 +2,24 @@ package software.ulpgc.moneycalculator.architecture.io;
 
 import software.ulpgc.moneycalculator.architecture.model.Currency;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FileCurrencyLoader implements CurrencyLoader {
 
-    private final File file;
+    private final InputStream fileStream;
     private final CurrencyDeserializer deserializer;
 
-    public FileCurrencyLoader(File file, CurrencyDeserializer deserializer) {
-        this.file = file;
+    public FileCurrencyLoader(InputStream fileStream, CurrencyDeserializer deserializer) {
+        this.fileStream = fileStream;
         this.deserializer = deserializer;
     }
 
     @Override
     public List<Currency> load() {
-        try (FileReader fileReader = new FileReader(file)) {
-            return  loadFromBufferedReader(new BufferedReader(fileReader));
+        try (BufferedReader fileReader = new BufferedReader( new InputStreamReader(fileStream))) {
+            return  loadFromBufferedReader(fileReader);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

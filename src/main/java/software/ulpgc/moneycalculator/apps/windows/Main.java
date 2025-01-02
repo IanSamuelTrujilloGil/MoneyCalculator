@@ -10,8 +10,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        File file = new File("src/main/resources/currencies.tsv");
-        List<Currency> currencyList = new FileCurrencyLoader(file, new TsvCurrencyDeserializer()).load();
+        List<Currency> currencyList = new FileCurrencyLoader(Main.class.getResourceAsStream("/currencies.tsv"),
+                new TsvCurrencyDeserializer()).load();
         MainFrame mainFrame = new MainFrame(currencyList);
         mainFrame.put("calculate", new CalculateCommand(
                 mainFrame.getDateDialog(),
